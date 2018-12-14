@@ -29,7 +29,8 @@ export default class PagerTitleIndicator extends Component {
         trackScroll:PropTypes.bool,
         selectedItemTextStyle: Text.propTypes.style,
         selectedBorderStyle: ViewPropTypes.style,
-        renderTitle: PropTypes.func
+        renderTitle: PropTypes.func,
+        onPress: PropTypes.func
     }
 
     static defaultProps = {
@@ -96,6 +97,7 @@ export default class PagerTitleIndicator extends Component {
                         if(this.props.trackScroll === true){
                             this._visibleDetect(index);
                         }
+                        this.props.onPress && this.props.onPress({index, title});
                         !isSelected && pager.setPage(index)}
                     }
                 >
